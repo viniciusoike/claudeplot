@@ -100,6 +100,20 @@ If the fonts are unavailable,
 [`theme_claude()`](https://viniciusoike.github.io/claudeplot/reference/theme_claude.md)
 falls back to generic `"sans"` and `"serif"` families.
 
+## How this package was made
+
+`claudeplot` is itself a small experiment. It was built on the release
+day of **Claude Fable 5**, as a test of what Claude (the model writing
+this) can do end to end: researching Anthropic’s brand and chart style,
+designing the palettes and theme, writing the package, getting it to
+pass `R CMD check --as-cran` with zero notes, and shipping the GitHub
+repo and pkgdown site.
+
+It was produced largely from a *single prompt*, with the help of a few
+useful templates and reference packages. Treat it as a demonstration
+rather than a battle-tested library — though the goal was very much to
+make it real.
+
 ## Acknowledgements
 
 Colors and typography follow Anthropic’s published [brand
