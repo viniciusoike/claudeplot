@@ -93,6 +93,42 @@ ggplot(df, aes(model, score, fill = model)) +
 
 ![](claudeplot_files/figure-html/bar-1.png)
 
+### Rounded bars
+
+Anthropic’s benchmark charts often use bars with softly rounded tops.
+The [ggrounded](https://botan.github.io/ggrounded/) package pairs nicely
+with claudeplot: swap
+[`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html)
+for
+[`geom_col_rounded()`](https://botan.github.io/ggrounded/reference/geom_col_rounded.html)
+for the same look.
+
+``` r
+
+library(ggrounded)
+
+ggplot(df, aes(model, score, fill = model)) +
+  geom_col_rounded(width = 0.7, radius = 0.3) +
+  geom_text(aes(label = score), vjust = -0.5, fontface = "bold") +
+  scale_fill_claude_d() +
+  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0, 0.05))) +
+  labs(title = "Agentic coding", subtitle = "SWE-Bench Pro (%)", x = NULL, y = NULL) +
+  theme_claude() +
+  theme(legend.position = "none")
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+#> Unable to load font: Lora
+#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+#> Unable to load font: Lora
+#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+#> Unable to load font: Lora
+#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+#> Unable to load font: Lora
+#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+#> Unable to load font: Lora
+```
+
+![](claudeplot_files/figure-html/rounded-1.png)
+
 Continuous scales interpolate the sequential and diverging palettes:
 
 ``` r

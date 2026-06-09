@@ -52,8 +52,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Getting started with claudeplot</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Getting started with claudeplot</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/viniciusoike/claudeplot/blob/main/vignettes/claudeplot.Rmd" class="external-link"><code>vignettes/claudeplot.Rmd</code></a></small>
@@ -141,9 +140,38 @@ and <code>fill</code>.</p>
 <span><span class="co">#&gt; Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :</span></span>
 <span><span class="co">#&gt; Unable to load font: Lora</span></span></code></pre></div>
 <p><img src="claudeplot_files/figure-html/bar-1.png" class="r-plt" alt="" width="840"></p>
+<div class="section level3">
+<h3 id="rounded-bars">Rounded bars<a class="anchor" aria-label="anchor" href="#rounded-bars"></a>
+</h3>
+<p>Anthropic’s benchmark charts often use bars with softly rounded tops.
+The <a href="https://botan.github.io/ggrounded/" class="external-link">ggrounded</a> package
+pairs nicely with claudeplot: swap <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col()</a></code> for
+<code><a href="https://botan.github.io/ggrounded/reference/geom_col_rounded.html" class="external-link">geom_col_rounded()</a></code> for the same look.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/botan/ggrounded" class="external-link">ggrounded</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">score</span>, fill <span class="op">=</span> <span class="va">model</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://botan.github.io/ggrounded/reference/geom_col_rounded.html" class="external-link">geom_col_rounded</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.7</span>, radius <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">score</span><span class="op">)</span>, vjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, fontface <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/scale_claude.html">scale_fill_claude_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">100</span><span class="op">)</span>, expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html" class="external-link">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.05</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Agentic coding"</span>, subtitle <span class="op">=</span> <span class="st">"SWE-Bench Pro (%)"</span>, x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/theme_claude.html">theme_claude</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :</span></span>
+<span><span class="co">#&gt; Unable to load font: Lora</span></span>
+<span><span class="co">#&gt; Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :</span></span>
+<span><span class="co">#&gt; Unable to load font: Lora</span></span>
+<span><span class="co">#&gt; Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :</span></span>
+<span><span class="co">#&gt; Unable to load font: Lora</span></span>
+<span><span class="co">#&gt; Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :</span></span>
+<span><span class="co">#&gt; Unable to load font: Lora</span></span>
+<span><span class="co">#&gt; Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :</span></span>
+<span><span class="co">#&gt; Unable to load font: Lora</span></span></code></pre></div>
+<p><img src="claudeplot_files/figure-html/rounded-1.png" class="r-plt" alt="" width="840"></p>
 <p>Continuous scales interpolate the sequential and diverging
 palettes:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">faithfuld</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">waiting</span>, <span class="va">eruptions</span>, fill <span class="op">=</span> <span class="va">density</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html" class="external-link">geom_raster</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/scale_claude.html">scale_fill_claude_c</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"oranges"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -151,19 +179,20 @@ palettes:</p>
 <span>  <span class="fu"><a href="../reference/theme_claude.html">theme_claude</a></span><span class="op">(</span>grid <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="claudeplot_files/figure-html/continuous-1.png" class="r-plt" alt="" width="840"></p>
 </div>
+</div>
 <div class="section level2">
 <h2 id="palettes">Palettes<a class="anchor" aria-label="anchor" href="#palettes"></a>
 </h2>
 <p>List the palettes, draw one, or draw them all:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/claude_palette_names.html">claude_palette_names</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "claude"       "brand"        "warm"         "cool"         "neutral"     </span></span>
 <span><span class="co">#&gt;  [6] "oranges"      "blues"        "greens"       "grays"        "orange_blue" </span></span>
 <span><span class="co">#&gt; [11] "green_orange" "spectral"</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/show_claude_palette.html">show_claude_palette</a></span><span class="op">(</span><span class="st">"spectral"</span>, n <span class="op">=</span> <span class="fl">9</span>, type <span class="op">=</span> <span class="st">"continuous"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="claudeplot_files/figure-html/show-one-1.png" class="r-plt" alt="" width="840"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/show_claude_palettes.html">show_claude_palettes</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="claudeplot_files/figure-html/show-all-1.png" class="r-plt" alt="" width="840"></p>
 <p>The qualitative families are <code>claude</code> (the vivid benchmark
@@ -180,7 +209,7 @@ Sequential families are <code>oranges</code>, <code>blues</code>,
 <p>claudeplot bundles Poppins and Lora and registers them with
 <code>systemfonts</code> on load. They render on <code>ragg</code> and
 <code>svglite</code> devices; check availability with:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/claude_font_status.html">claude_font_status</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">claudeplot font status</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────</span></span></span>
