@@ -21,6 +21,7 @@ Imports:
     rlang,
     scales (>= 1.2.0)
 Suggests:
+    ggrounded,
     knitr,
     ragg,
     rmarkdown,

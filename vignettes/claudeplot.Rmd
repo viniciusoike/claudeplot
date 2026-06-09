@@ -75,6 +75,25 @@ ggplot(df, aes(model, score, fill = model)) +
   theme(legend.position = "none")
 ```
 
+### Rounded bars
+
+Anthropic's benchmark charts often use bars with softly rounded tops. The
+[ggrounded](https://botan.github.io/ggrounded/) package pairs nicely with
+claudeplot: swap `geom_col()` for `geom_col_rounded()` for the same look.
+
+```{r rounded, eval = requireNamespace("ggrounded", quietly = TRUE)}
+library(ggrounded)
+
+ggplot(df, aes(model, score, fill = model)) +
+  geom_col_rounded(width = 0.7, radius = 0.3) +
+  geom_text(aes(label = score), vjust = -0.5, fontface = "bold") +
+  scale_fill_claude_d() +
+  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0, 0.05))) +
+  labs(title = "Agentic coding", subtitle = "SWE-Bench Pro (%)", x = NULL, y = NULL) +
+  theme_claude() +
+  theme(legend.position = "none")
+```
+
 Continuous scales interpolate the sequential and diverging palettes:
 
 ```{r continuous}
