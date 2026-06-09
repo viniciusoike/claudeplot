@@ -1,0 +1,14 @@
+^claudeplot\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+^data-raw$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^README\.Rmd$
+^\.github$
+^\.claude$
+^cran-comments\.md$
+^Rplots\.pdf$
+^README\.html$
+^\.positai$

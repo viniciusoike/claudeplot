@@ -1,0 +1,17 @@
+claudeplot bundles two open-source font families in inst/fonts/. Both are
+licensed under the SIL Open Font License, Version 1.1. The full license text
+for each is included alongside the font files.
+
+Poppins
+  Copyright 2020 The Poppins Project Authors
+  https://github.com/itfoundry/Poppins
+  License: SIL Open Font License 1.1 (inst/fonts/poppins/OFL.txt)
+
+Lora
+  Copyright 2011 The Lora Project Authors, with Reserved Font Name "Lora"
+  https://github.com/cyrealtype/Lora-Cyrillic
+  License: SIL Open Font License 1.1 (inst/fonts/lora/OFL.txt)
+
+The color palettes and typography choices follow Anthropic's published brand
+guidelines. claudeplot is an unofficial, community project and is not
+affiliated with or endorsed by Anthropic.

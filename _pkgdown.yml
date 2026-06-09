@@ -1,0 +1,36 @@
+url: https://viniciusoike.github.io/claudeplot/
+
+template:
+  bootstrap: 5
+  bslib:
+    base_font: {google: "Poppins"}
+    heading_font: {google: "Poppins"}
+    code_font: {google: "Source Code Pro"}
+    primary: "#D97757"
+    bg: "#FAF9F5"
+    fg: "#141413"
+
+reference:
+  - title: Theme
+    contents:
+      - theme_claude
+  - title: Scales
+    contents:
+      - scale_claude
+  - title: Palettes
+    contents:
+      - claude_palette
+      - claude_pal
+      - claude_palette_names
+      - show_claude_palette
+      - show_claude_palettes
+      - claude_colors
+  - title: Fonts
+    contents:
+      - claude_font_status
+
+articles:
+  - title: Articles
+    navbar: ~
+    contents:
+      - claudeplot
