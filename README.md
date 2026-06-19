@@ -7,6 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-universe](https://viniciusoike.r-universe.dev/badges/claudeplot)](https://viniciusoike.r-universe.dev/claudeplot)
 <!-- badges: end -->
 
 **claudeplot** brings the visual language of

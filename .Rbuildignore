@@ -12,3 +12,5 @@
 ^Rplots\.pdf$
 ^README\.html$
 ^\.positai$
+^doc$
+^Meta$
