@@ -7,15 +7,22 @@ claude_font_is_available <- function(family) {
   if (!requireNamespace("systemfonts", quietly = TRUE)) return(FALSE)
   if (!requireNamespace("ragg", quietly = TRUE)) return(FALSE)
 
+  # Match the family name exactly (case-insensitive). Avoid grepl(), which
+  # would treat `family` as a regex and match partially -- on a given OS that
+  # makes availability depend on whatever fonts happen to be installed (e.g.
+  # "Poppins" spuriously matching "Poppins Medium").
+  has_family <- function(families) {
+    length(families) > 0 && any(tolower(families) == tolower(family))
+  }
+
   tryCatch(
     {
       reg <- systemfonts::registry_fonts()
-      if (nrow(reg) > 0 &&
-          any(grepl(family, reg$family, ignore.case = TRUE))) {
+      if (!is.null(reg) && nrow(reg) > 0 && has_family(reg$family)) {
         return(TRUE)
       }
       sys <- systemfonts::system_fonts()
-      any(grepl(family, sys$family, ignore.case = TRUE))
+      !is.null(sys) && has_family(sys$family)
     },
     error = function(e) FALSE
   )
