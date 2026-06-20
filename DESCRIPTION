@@ -24,6 +24,7 @@ Imports:
 Suggests:
     ggrounded,
     knitr,
+    patchwork,
     ragg,
     rmarkdown,
     systemfonts,
