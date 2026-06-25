@@ -11,6 +11,7 @@ theme_claude(
   font_subtitle = "Lora",
   grid = c("y", "x", "xy", "none"),
   axis_lines = TRUE,
+  axis_ticks = FALSE,
   background = "white",
   ...
 )
@@ -32,6 +33,8 @@ or \code{"none"}.}
 
 \item{axis_lines}{Logical; draw strong axis lines and ticks on the left and
 bottom? Defaults to \code{TRUE}.}
+
+\item{axis_ticks}{Logical; draw axis ticks? Defaults to \code{FALSE}.}
 
 \item{background}{Panel and plot background fill. Use \code{"white"} (default) or
 \code{"cloud"} for Anthropic's warm off-white, or any color string.}

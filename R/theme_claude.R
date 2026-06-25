@@ -19,6 +19,7 @@
 #'   or `"none"`.
 #' @param axis_lines Logical; draw strong axis lines and ticks on the left and
 #'   bottom? Defaults to `TRUE`.
+#' @param axis_ticks Logical; draw axis ticks? Defaults to `FALSE`.
 #' @param background Panel and plot background fill. Use `"white"` (default) or
 #'   `"cloud"` for Anthropic's warm off-white, or any color string.
 #' @param ... Passed to [ggplot2::theme_minimal()].
@@ -52,14 +53,17 @@
 #'   theme_claude()
 #' }
 #' @export
-theme_claude <- function(base_size = 12,
-                         font_title = "Poppins",
-                         font_text = "Poppins",
-                         font_subtitle = "Lora",
-                         grid = c("y", "x", "xy", "none"),
-                         axis_lines = TRUE,
-                         background = "white",
-                         ...) {
+theme_claude <- function(
+  base_size = 12,
+  font_title = "Poppins",
+  font_text = "Poppins",
+  font_subtitle = "Lora",
+  grid = c("y", "x", "xy", "none"),
+  axis_lines = TRUE,
+  axis_ticks = FALSE,
+  background = "white",
+  ...
+) {
   grid <- match.arg(grid)
   if (!is.logical(axis_lines) || length(axis_lines) != 1) {
     cli::cli_abort("{.arg axis_lines} must be a single {.cls logical} value.")
@@ -95,9 +99,20 @@ theme_claude <- function(base_size = 12,
   }
 
   # Axis lines ----
-  axis_theme <- if (axis_lines) {
+  axis_theme <- if (axis_lines & axis_ticks) {
     ggplot2::theme_sub_axis(
       line = ggplot2::element_line(color = ink, linewidth = 0.8),
+      ticks = ggplot2::element_line(color = ink, linewidth = 0.8),
+      ticks.length = ggplot2::unit(5, "pt")
+    )
+  } else if (axis_lines) {
+    ggplot2::theme_sub_axis(
+      line = ggplot2::element_line(color = ink, linewidth = 0.8),
+      ticks = ggplot2::element_blank()
+    )
+  } else if (axis_ticks) {
+    ggplot2::theme_sub_axis(
+      line = ggplot2::element_blank(),
       ticks = ggplot2::element_line(color = ink, linewidth = 0.8),
       ticks.length = ggplot2::unit(5, "pt")
     )
@@ -109,44 +124,70 @@ theme_claude <- function(base_size = 12,
   }
 
   # Assemble ----
-  ggplot2::theme_minimal(base_size = base_size, base_family = font_text, ...) %+replace%
+  ggplot2::theme_minimal(
+    base_size = base_size,
+    base_family = font_text,
+    ...
+  ) %+replace%
     ggplot2::theme(
-      text = ggplot2::element_text(family = font_text, color = text_col),
-      plot.background = ggplot2::element_rect(fill = bg, color = NA),
-      panel.background = ggplot2::element_rect(fill = bg, color = NA),
-      panel.grid.major.y = grid_y,
-      panel.grid.major.x = grid_x,
-      panel.grid.minor = ggplot2::element_blank(),
-      plot.title = ggplot2::element_text(
-        family = font_title, face = "bold", size = ggplot2::rel(1.45),
-        color = ink, hjust = 0, margin = ggplot2::margin(b = 4)
+      text = ggplot2::element_text(family = font_text, color = text_col)
+    ) +
+    ggplot2::theme_sub_plot(
+      background = ggplot2::element_rect(fill = bg, color = NA),
+      margin = ggplot2::margin(14, 16, 12, 14),
+      title = ggplot2::element_text(
+        family = font_title,
+        face = "bold",
+        size = ggplot2::rel(1.45),
+        color = ink,
+        hjust = 0.5,
+        margin = ggplot2::margin(b = 4)
       ),
-      plot.subtitle = ggplot2::element_text(
-        family = font_subtitle, size = ggplot2::rel(1.0),
-        color = muted_col, hjust = 0, margin = ggplot2::margin(b = 10)
+      subtitle = ggplot2::element_text(
+        family = font_subtitle,
+        size = ggplot2::rel(1.0),
+        color = muted_col,
+        hjust = 0.5,
+        margin = ggplot2::margin(b = 10)
       ),
-      plot.caption = ggplot2::element_text(
-        family = font_subtitle, size = ggplot2::rel(0.7),
-        color = muted_col, hjust = 1, margin = ggplot2::margin(t = 8)
-      ),
-      plot.title.position = "plot",
-      plot.caption.position = "plot",
-      plot.margin = ggplot2::margin(14, 16, 12, 14),
-      axis.title = ggplot2::element_text(size = ggplot2::rel(0.9), color = text_col),
-      axis.title.x = ggplot2::element_text(margin = ggplot2::margin(t = 6)),
-      axis.title.y = ggplot2::element_text(
-        angle = 90, margin = ggplot2::margin(r = 6)
-      ),
-      axis.text = ggplot2::element_text(size = ggplot2::rel(0.85), color = text_col),
-      legend.position = "top",
-      legend.justification = "left",
-      legend.title = ggplot2::element_text(size = ggplot2::rel(0.9), color = text_col),
-      legend.text = ggplot2::element_text(size = ggplot2::rel(0.85), color = text_col),
-      legend.key = ggplot2::element_blank(),
-      legend.background = ggplot2::element_blank(),
-      strip.text = ggplot2::element_text(
-        family = font_text, face = "bold", size = ggplot2::rel(0.9), color = ink
+      caption = ggplot2::element_text(
+        family = font_subtitle,
+        size = ggplot2::rel(0.7),
+        color = muted_col,
+        hjust = 1,
+        margin = ggplot2::margin(t = 8)
       )
+    ) +
+    ggplot2::theme_sub_panel(
+      grid.major.x = grid_x,
+      grid.major.y = grid_y,
+      grid.minor = ggplot2::element_blank(),
+      background = ggplot2::element_rect(fill = bg, color = NA)
+    ) +
+    ggplot2::theme_sub_axis(
+      text = ggplot2::element_text(
+        color = text_col,
+        size = ggplot2::rel(0.85)
+      ),
+      title = ggplot2::element_text(
+        size = ggplot2::rel(0.9),
+        color = text_col,
+        face = "bold"
+      )
+    ) +
+    ggplot2::theme_sub_legend(
+      position = "bottom",
+      justification = "left",
+      title = ggplot2::element_text(
+        size = ggplot2::rel(0.9),
+        color = text_col
+      ),
+      text = ggplot2::element_text(
+        size = ggplot2::rel(0.85),
+        color = text_col
+      ),
+      key.spacing = ggplot2::unit(0.1, "lines"),
+      background = ggplot2::element_rect(fill = bg, color = muted_col)
     ) +
     axis_theme
 }

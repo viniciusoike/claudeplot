@@ -32,7 +32,9 @@ NULL
 scale_color_claude_d <- function(palette = "claude", reverse = FALSE, ...) {
   ggplot2::discrete_scale(
     aesthetics = "colour",
-    palette = function(n) claude_pal(palette, n, type = "discrete", reverse = reverse),
+    palette = function(n) {
+      claude_pal(palette, n, type = "discrete", reverse = reverse)
+    },
     ...
   )
 }
@@ -46,7 +48,9 @@ scale_colour_claude_d <- scale_color_claude_d
 scale_fill_claude_d <- function(palette = "claude", reverse = FALSE, ...) {
   ggplot2::discrete_scale(
     aesthetics = "fill",
-    palette = function(n) claude_pal(palette, n, type = "discrete", reverse = reverse),
+    palette = function(n) {
+      claude_pal(palette, n, type = "discrete", reverse = reverse)
+    },
     ...
   )
 }
