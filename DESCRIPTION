@@ -22,19 +22,20 @@ Imports:
     rlang,
     scales (>= 1.2.0)
 Suggests:
-    ggrounded,
-    knitr,
+    gground,
+    quarto,
     patchwork,
     ragg,
     rmarkdown,
     systemfonts,
     testthat (>= 3.0.0),
     vdiffr (>= 1.0.0),
-    withr
+    withr,
+    knitr
 RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
 LazyData: true
-VignetteBuilder: knitr
+VignetteBuilder: quarto
 URL: https://github.com/viniciusoike/claudeplot
 BugReports: https://github.com/viniciusoike/claudeplot/issues

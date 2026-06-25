@@ -1,22 +1,22 @@
 ---
 title: "Getting started with claudeplot"
-output: rmarkdown::html_vignette
+format:
+  html:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Getting started with claudeplot}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}.
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: '#>'
+    fig.width: 7
+    fig.height: 5
+    dpi: 300
+    message: false
+    warning: false
 ---
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.width = 7,
-  fig.height = 4.5,
-  dpi = 120,
-  dev = if (requireNamespace("ragg", quietly = TRUE)) "ragg_png" else "png"
-)
-```
 
 `claudeplot` brings the visual language of Anthropic and Claude to `ggplot2`:
 a publication-ready theme, color palettes from Anthropic's brand and its
@@ -39,7 +39,9 @@ ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
   labs(
     title = "Fuel efficiency by weight",
     subtitle = "Heavier cars travel fewer miles per gallon",
-    x = "Weight (1000 lbs)", y = "Miles per gallon", color = "Cylinders"
+    x = "Weight (1000 lbs)",
+    y = "Miles per gallon",
+    color = "Cylinders"
   ) +
   theme_claude()
 ```
@@ -69,8 +71,16 @@ ggplot(df, aes(model, score, fill = model)) +
   geom_col(width = 0.7) +
   geom_text(aes(label = score), vjust = -0.5, fontface = "bold") +
   scale_fill_claude_d() +
-  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0, 0.05))) +
-  labs(title = "Agentic coding", subtitle = "SWE-Bench Pro (%)", x = NULL, y = NULL) +
+  scale_y_continuous(
+    limits = c(0, 100),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    title = "Agentic coding",
+    subtitle = "SWE-Bench Pro (%)",
+    x = NULL,
+    y = NULL
+  ) +
   theme_claude() +
   theme(legend.position = "none")
 ```
@@ -78,18 +88,26 @@ ggplot(df, aes(model, score, fill = model)) +
 ### Rounded bars
 
 Anthropic's benchmark charts often use bars with softly rounded tops. The
-[ggrounded](https://botan.github.io/ggrounded/) package pairs nicely with
-claudeplot: swap `geom_col()` for `geom_col_rounded()` for the same look.
+[gground](https://github.com/dxsbiocc/gground/tree/main) package pairs nicely with
+claudeplot: swap `geom_col()` for `geom_round_col()` for the same look.
 
-```{r rounded, eval = requireNamespace("ggrounded", quietly = TRUE)}
-library(ggrounded)
+```{r rounded, eval = requireNamespace("gground", quietly = TRUE)}
+library(gground)
 
 ggplot(df, aes(model, score, fill = model)) +
-  geom_col_rounded(width = 0.7, radius = 0.3) +
+  geom_round_col(width = 0.7, radius = 0.3) +
   geom_text(aes(label = score), vjust = -0.5, fontface = "bold") +
   scale_fill_claude_d() +
-  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0, 0.05))) +
-  labs(title = "Agentic coding", subtitle = "SWE-Bench Pro (%)", x = NULL, y = NULL) +
+  scale_y_continuous(
+    limits = c(0, 100),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    title = "Agentic coding",
+    subtitle = "SWE-Bench Pro (%)",
+    x = NULL,
+    y = NULL
+  ) +
   theme_claude() +
   theme(legend.position = "none")
 ```
