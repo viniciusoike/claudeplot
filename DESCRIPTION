@@ -1,7 +1,7 @@
 Package: claudeplot
 Type: Package
 Title: Anthropic and Claude Inspired 'ggplot2' Themes and Color Scales
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Vinicius", "Oike", email = "viniciusoike@gmail.com",
            role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0009-0005-8015-9189"))
