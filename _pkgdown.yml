@@ -34,4 +34,5 @@ articles:
     navbar: ~
     contents:
       - claudeplot
+      - making-of
       - replicating-charts
