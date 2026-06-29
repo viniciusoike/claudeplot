@@ -6,7 +6,8 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/viniciusoike/claudeplot)
 [![R-universe](https://viniciusoike.r-universe.dev/badges/claudeplot)](https://viniciusoike.r-universe.dev/claudeplot)
 <!-- badges: end -->
 
@@ -20,9 +21,20 @@ body text — are bundled and registered automatically.
 
 ## Installation
 
+Install the development version from GitHub:
+
 ``` r
 # install.packages("pak")
 pak::pak("viniciusoike/claudeplot")
+```
+
+Or install from [R-universe](https://viniciusoike.r-universe.dev):
+
+``` r
+install.packages(
+  "claudeplot",
+  repos = c("https://viniciusoike.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
 
 For the bundled fonts to render, install the suggested packages and use
