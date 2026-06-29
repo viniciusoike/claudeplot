@@ -21,6 +21,8 @@ Imports:
     grDevices,
     rlang,
     scales (>= 1.2.0)
+Remotes:
+    dxsbiocc/gground
 Suggests:
     gground,
     quarto,
