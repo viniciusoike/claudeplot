@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/viniciusoike/claudeplot/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/viniciusoike/claudeplot/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](https://github.com/viniciusoike/claudeplot)
