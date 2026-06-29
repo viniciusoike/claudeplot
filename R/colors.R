@@ -32,6 +32,8 @@ claude_colors <- c(
   viz_pink   = "#E96B9E",
   viz_orange = "#E8703A",
   viz_amber  = "#F2A516",
+  viz_indigo = "#3B2D9E",
+  viz_ochre  = "#BD8A2A",
   viz_gray   = "#C9C7BA"
 )
 
@@ -54,6 +56,15 @@ claude_colors <- c(
   # Cool accents only.
   cool = c(
     "#2C71D6", "#6A9BCC", "#1CA672", "#788C5D"
+  ),
+  # Themed survey palette (Claude's "colored by theme" categorical charts).
+  editorial = c(
+    "#2C71D6", "#E96B9E", "#F2A516", "#E8703A", "#3B2D9E"
+  ),
+  # Ochre / steel-blue two-tone from the economic-report comparison charts,
+  # with a neutral gray third series.
+  ochre_blue = c(
+    "#BD8A2A", "#3D6A99", "#6E6D66"
   ),
   # Neutral grays from dark to light.
   neutral = c(
