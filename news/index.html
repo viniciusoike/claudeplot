@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">claudeplot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,11 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/claudeplot.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/making-of.html">How this package was made</a></li>
+    <li><a class="dropdown-item" href="../articles/replicating-charts.html">Replicating Anthropic's charts</a></li>
+  </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -33,6 +38,27 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="claudeplot-020">claudeplot 0.2.0<a class="anchor" aria-label="anchor" href="#claudeplot-020"></a></h2>
+<div class="section level3">
+<h3 id="theme-0-2-0">Theme<a class="anchor" aria-label="anchor" href="#theme-0-2-0"></a></h3>
+<ul><li>
+<code><a href="../reference/theme_claude.html">theme_claude()</a></code> gains an <code>axis_ticks</code> argument to draw axis ticks independently of <code>axis_lines</code> (defaults to <code>FALSE</code>).</li>
+<li>The theme is now built on the <code>theme_sub_*()</code> API introduced in ggplot2 4.0.0.</li>
+<li>Default legend position moved from <code>"top"</code> to <code>"bottom"</code>.</li>
+<li>Plot titles and subtitles are now centered (<code>hjust = 0.5</code>) rather than left-aligned.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="colors-and-palettes-0-2-0">Colors and palettes<a class="anchor" aria-label="anchor" href="#colors-and-palettes-0-2-0"></a></h3>
+<ul><li>Added two brand colors: <code>viz_indigo</code> and <code>viz_ochre</code>.</li>
+<li>Added two qualitative palettes: <code>editorial</code> (Claude’s themed survey charts) and <code>ochre_blue</code> (the ochre / steel-blue economic-report comparison charts).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-0-2-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-0-2-0"></a></h3>
+<ul><li>Vignettes migrated from R Markdown to Quarto and plotting dependencies switched to gground.</li>
+<li>Expanded the chart-replication gallery and regenerated figures.</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="claudeplot-010">claudeplot 0.1.0<a class="anchor" aria-label="anchor" href="#claudeplot-010"></a></h2>
 <ul><li>Initial release.</li>
 <li>
@@ -42,7 +68,8 @@
 <li>Palette display helpers: <code><a href="../reference/show_claude_palette.html">show_claude_palette()</a></code> and <code><a href="../reference/show_claude_palettes.html">show_claude_palettes()</a></code>.</li>
 <li>Bundled Poppins and Lora typefaces, registered automatically via <code>systemfonts</code>; diagnose with <code><a href="../reference/claude_font_status.html">claude_font_status()</a></code>.</li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

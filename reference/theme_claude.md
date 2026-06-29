@@ -17,6 +17,7 @@ theme_claude(
   font_subtitle = "Lora",
   grid = c("y", "x", "xy", "none"),
   axis_lines = TRUE,
+  axis_ticks = FALSE,
   background = "white",
   ...
 )
@@ -52,6 +53,10 @@ theme_claude(
 
   Logical; draw strong axis lines and ticks on the left and bottom?
   Defaults to `TRUE`.
+
+- axis_ticks:
+
+  Logical; draw axis ticks? Defaults to `FALSE`.
 
 - background:
 

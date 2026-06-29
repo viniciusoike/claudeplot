@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">claudeplot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,11 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/claudeplot.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/making-of.html">How this package was made</a></li>
+    <li><a class="dropdown-item" href="../articles/replicating-charts.html">Replicating Anthropic's charts</a></li>
+  </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -59,9 +64,9 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">claude_palette_names</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "claude"       "brand"        "warm"         "cool"         "neutral"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "oranges"      "blues"        "greens"       "grays"        "orange_blue" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "green_orange" "spectral"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "claude"       "brand"        "warm"         "cool"         "editorial"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "ochre_blue"   "neutral"      "oranges"      "blues"        "greens"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "grays"        "orange_blue"  "green_orange" "spectral"    </span>
 <span class="r-in"><span><span class="fu">claude_palette_names</span><span class="op">(</span><span class="st">"sequential"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "oranges" "blues"   "greens"  "grays"  </span>
 </code></pre></div>

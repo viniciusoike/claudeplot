@@ -25,23 +25,11 @@ ggplot(mtcars, aes(wt, mpg, color = factor(cyl))) +
   labs(
     title = "Fuel efficiency by weight",
     subtitle = "Heavier cars travel fewer miles per gallon",
-    x = "Weight (1000 lbs)", y = "Miles per gallon", color = "Cylinders"
+    x = "Weight (1000 lbs)",
+    y = "Miles per gallon",
+    color = "Cylinders"
   ) +
   theme_claude()
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): Unable to load
-#> font: Lora
-#> Warning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): Unable to load
-#> font: Lora
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
 ```
 
 ![](claudeplot_files/figure-html/theme-1.png)
@@ -75,20 +63,18 @@ ggplot(df, aes(model, score, fill = model)) +
   geom_col(width = 0.7) +
   geom_text(aes(label = score), vjust = -0.5, fontface = "bold") +
   scale_fill_claude_d() +
-  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0, 0.05))) +
-  labs(title = "Agentic coding", subtitle = "SWE-Bench Pro (%)", x = NULL, y = NULL) +
+  scale_y_continuous(
+    limits = c(0, 100),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    title = "Agentic coding",
+    subtitle = "SWE-Bench Pro (%)",
+    x = NULL,
+    y = NULL
+  ) +
   theme_claude() +
   theme(legend.position = "none")
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
 ```
 
 ![](claudeplot_files/figure-html/bar-1.png)
@@ -96,35 +82,33 @@ ggplot(df, aes(model, score, fill = model)) +
 ### Rounded bars
 
 Anthropic’s benchmark charts often use bars with softly rounded tops.
-The [ggrounded](https://botan.github.io/ggrounded/) package pairs nicely
-with claudeplot: swap
+The [gground](https://github.com/dxsbiocc/gground/tree/main) package
+pairs nicely with claudeplot: swap
 [`geom_col()`](https://ggplot2.tidyverse.org/reference/geom_bar.html)
 for
-[`geom_col_rounded()`](https://botan.github.io/ggrounded/reference/geom_col_rounded.html)
+[`geom_round_col()`](https://rdrr.io/pkg/gground/man/geom_round_bar.html)
 for the same look.
 
 ``` r
 
-library(ggrounded)
+library(gground)
 
 ggplot(df, aes(model, score, fill = model)) +
-  geom_col_rounded(width = 0.7, radius = 0.3) +
+  geom_round_col(width = 0.7, radius = 0.3) +
   geom_text(aes(label = score), vjust = -0.5, fontface = "bold") +
   scale_fill_claude_d() +
-  scale_y_continuous(limits = c(0, 100), expand = expansion(mult = c(0, 0.05))) +
-  labs(title = "Agentic coding", subtitle = "SWE-Bench Pro (%)", x = NULL, y = NULL) +
+  scale_y_continuous(
+    limits = c(0, 100),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
+  labs(
+    title = "Agentic coding",
+    subtitle = "SWE-Bench Pro (%)",
+    x = NULL,
+    y = NULL
+  ) +
   theme_claude() +
   theme(legend.position = "none")
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
-#> Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
-#> Unable to load font: Lora
 ```
 
 ![](claudeplot_files/figure-html/rounded-1.png)
@@ -149,9 +133,9 @@ List the palettes, draw one, or draw them all:
 ``` r
 
 claude_palette_names()
-#>  [1] "claude"       "brand"        "warm"         "cool"         "neutral"     
-#>  [6] "oranges"      "blues"        "greens"       "grays"        "orange_blue" 
-#> [11] "green_orange" "spectral"
+#>  [1] "claude"       "brand"        "warm"         "cool"         "editorial"   
+#>  [6] "ochre_blue"   "neutral"      "oranges"      "blues"        "greens"      
+#> [11] "grays"        "orange_blue"  "green_orange" "spectral"
 ```
 
 ``` r
@@ -182,13 +166,6 @@ check availability with:
 ``` r
 
 claude_font_status()
-#> 
-#> ── claudeplot font status ──────────────────────────────────────────────────────
-#> ✔ Poppins (headings): available
-#> ✔ Lora (body/subtitle): available
-#> ✔ systemfonts: installed
-#> ✔ ragg: installed
-#> ✔ `theme_claude()` will use Poppins and Lora automatically.
 ```
 
 If a font is unavailable,

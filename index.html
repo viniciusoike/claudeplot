@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="index.html">claudeplot</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +41,13 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="articles/claudeplot.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/making-of.html">How this package was made</a></li>
+    <li><a class="dropdown-item" href="articles/replicating-charts.html">Replicating Anthropic's charts</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -66,17 +73,24 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
+<p>Install the development version from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"viniciusoike/claudeplot"</span><span class="op">)</span></span></code></pre></div>
-<p>For the bundled fonts to render, install the suggested packages and use a <code>ragg</code> graphics device:</p>
+<p>Or install from <a href="https://viniciusoike.r-universe.dev" class="external-link">R-universe</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
+<span>  <span class="st">"claudeplot"</span>,</span>
+<span>  repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"https://viniciusoike.r-universe.dev"</span>, <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>For the bundled fonts to render, install the suggested packages and use a <code>ragg</code> graphics device:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"systemfonts"</span>, <span class="st">"ragg"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/viniciusoike/claudeplot" class="external-link">claudeplot</a></span><span class="op">)</span></span>
 <span></span>
@@ -102,7 +116,7 @@
 <h2 id="color-scales">Color scales<a class="anchor" aria-label="anchor" href="#color-scales"></a>
 </h2>
 <p>Discrete (<code>_d</code>) and continuous (<code>_c</code>) scales are available for both <code>color</code> (and <code>colour</code>) and <code>fill</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/scale_claude.html">scale_color_claude_d</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"claude"</span><span class="op">)</span>     <span class="co"># discrete, vivid benchmark palette</span></span>
 <span><span class="fu"><a href="reference/scale_claude.html">scale_fill_claude_d</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"brand"</span><span class="op">)</span>        <span class="co"># discrete, muted brand accents</span></span>
 <span><span class="fu"><a href="reference/scale_claude.html">scale_fill_claude_c</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"oranges"</span><span class="op">)</span>      <span class="co"># continuous, sequential</span></span>
@@ -112,7 +126,7 @@
 <h2 id="palettes">Palettes<a class="anchor" aria-label="anchor" href="#palettes"></a>
 </h2>
 <p>Explore palettes with <code><a href="reference/show_claude_palette.html">show_claude_palette()</a></code> (one palette) and <code><a href="reference/show_claude_palettes.html">show_claude_palettes()</a></code> (all of them):</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/show_claude_palettes.html">show_claude_palettes</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-palettes-1.png" alt="" width="100%"></p>
 <p>The families are <strong>qualitative</strong> (<code>claude</code>, <code>brand</code>, <code>warm</code>, <code>cool</code>, <code>neutral</code>), <strong>sequential</strong> (<code>oranges</code>, <code>blues</code>, <code>greens</code>, <code>grays</code>), and <strong>diverging</strong> (<code>orange_blue</code>, <code>green_orange</code>, <code>spectral</code>). List them with <code><a href="reference/claude_palette_names.html">claude_palette_names()</a></code>.</p>
@@ -121,7 +135,7 @@
 <h2 id="fonts">Fonts<a class="anchor" aria-label="anchor" href="#fonts"></a>
 </h2>
 <p>claudeplot bundles Poppins and Lora (both SIL Open Font License). They are registered with <code>systemfonts</code> when the package loads. Check the status with:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/claude_font_status.html">claude_font_status</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>If the fonts are unavailable, <code><a href="reference/theme_claude.html">theme_claude()</a></code> falls back to generic <code>"sans"</code> and <code>"serif"</code> families.</p>
 </div>
@@ -171,7 +185,8 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://github.com/viniciusoike/claudeplot" class="external-link"><img src="https://img.shields.io/badge/version-0.2.0-blue.svg" alt="Version"></a></li>
 <li><a href="https://viniciusoike.r-universe.dev/claudeplot" class="external-link"><img src="https://viniciusoike.r-universe.dev/badges/claudeplot" alt="R-universe"></a></li>
 </ul>
 </div>

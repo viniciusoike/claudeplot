@@ -10,10 +10,22 @@ body text — are bundled and registered automatically.
 
 ## Installation
 
+Install the development version from GitHub:
+
 ``` r
 
 # install.packages("pak")
 pak::pak("viniciusoike/claudeplot")
+```
+
+Or install from [R-universe](https://viniciusoike.r-universe.dev):
+
+``` r
+
+install.packages(
+  "claudeplot",
+  repos = c("https://viniciusoike.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
 
 For the bundled fonts to render, install the suggested packages and use

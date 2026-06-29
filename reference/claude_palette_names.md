@@ -22,9 +22,9 @@ A character vector of palette names (invisible side effects: none).
 
 ``` r
 claude_palette_names()
-#>  [1] "claude"       "brand"        "warm"         "cool"         "neutral"     
-#>  [6] "oranges"      "blues"        "greens"       "grays"        "orange_blue" 
-#> [11] "green_orange" "spectral"    
+#>  [1] "claude"       "brand"        "warm"         "cool"         "editorial"   
+#>  [6] "ochre_blue"   "neutral"      "oranges"      "blues"        "greens"      
+#> [11] "grays"        "orange_blue"  "green_orange" "spectral"    
 claude_palette_names("sequential")
 #> [1] "oranges" "blues"   "greens"  "grays"  
 ```
