@@ -122,9 +122,9 @@ pass `R CMD check --as-cran` with zero notes, and shipping the GitHub
 repo and pkgdown site.
 
 It was produced largely from a *single prompt*, with the help of a few
-useful templates and reference packages. Treat it as a demonstration
-rather than a battle-tested library — though the goal was very much to
-make it real.
+useful templates and reference packages. It has since been improved and
+worked upon. The current 0.2.0 version is stable. The first commit in
+this repository is the result of Claude’s work.
 
 ## Acknowledgements
 
